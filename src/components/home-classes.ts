@@ -1,0 +1,11 @@
+export const EYEBROW = "flex items-center gap-2.5 font-extrabold uppercase";
+export const EYEBROW_SIZE = "text-[11px] tracking-[.13em] upto-560:text-[9px] upto-560:tracking-[.08em]";
+export const SECTION_EYEBROW = `${EYEBROW} ${EYEBROW_SIZE} text-brand-hover`;
+export const STATUS_DOT = "size-1.5 shrink-0 rounded-full bg-online shadow-[0_0_12px_#3dd68c30]";
+export const SECTION = "mx-auto max-w-[1280px] px-8 upto-560:px-[22px] upto-360:px-[18px]";
+export const HEADING = "font-display leading-[1.25] font-bold tracking-[-.045em]";
+export const HEADING_SIZE = "text-[clamp(28px,3.2vw,44px)] upto-560:text-[29px]";
+export const SECTION_TEXT = "text-[15px] leading-[1.85] text-muted upto-560:text-[13px]";
+export const TEXT_LINK = "mt-[27px] inline-flex items-center gap-6 border-b pb-[7px] text-[12px] font-bold transition-[color] duration-200 ease-[ease]";
+export const TEXT_LINK_ARROW = "text-[18px] text-brand";
+export const STAGE_NUMBER = "absolute -z-1 font-display text-[145px] leading-none font-extrabold tracking-[-.06em] text-transparent [-webkit-text-stroke:1px_#ffffff0e] upto-560:text-[110px]";

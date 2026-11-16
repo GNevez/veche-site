@@ -102,3 +102,46 @@ export function PlayIcon(props: IconProps) {
     </Icon>
   );
 }
+
+export function CopyIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="9" y="9" width="12" height="12" rx="2" />
+      <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+    </Icon>
+  );
+}
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m5 12 5 5L20 7" />
+    </Icon>
+  );
+}
+
+export function GamepadIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01" />
+      <path d="M17.3 5H6.7a4 4 0 0 0-3.96 3.43L2 14a3 3 0 0 0 5.2 2.4L9 14h6l1.8 2.4A3 3 0 0 0 22 14l-.74-5.57A4 4 0 0 0 17.3 5z" />
+    </Icon>
+  );
+}
+
+export function CalendarIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M16 3v4M8 3v4M3 10h18" />
+    </Icon>
+  );
+}
+
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m6 9 6 6 6-6" />
+    </Icon>
+  );
+}

@@ -1,0 +1,36 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [production]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, veche-sv1]
+    steps:
+      - name: Atualizar código
+        run: |
+          cd "$HOME/veche-site"
+          git fetch origin production
+          git checkout -q production || git checkout -q -b production origin/production
+          git merge --ff-only origin/production
+
+      - name: Subir site
+        run: bash "$HOME/veche-site/deploy.sh"
+
+      - name: Verificar saúde
+        run: |
+          for i in $(seq 1 24); do
+            if docker run --rm --network veche_default curlimages/curl -fsS -o /dev/null http://site:3000/; then
+              echo "Site no ar"
+              exit 0
+            fi
+            sleep 5
+          done
+          docker compose -f "$HOME/veche-site/docker-compose.yml" logs --tail 100 site
+          exit 1

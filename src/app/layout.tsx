@@ -15,7 +15,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Vault — Há mais do outro lado",
+  title: "Veche — Há mais do outro lado",
   description:
     "Call com o squad, um feed do que a galera está jogando e clipes da sua jogatina salvos na hora. Tudo num lugar só.",
 };

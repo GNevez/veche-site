@@ -1,0 +1,16 @@
+export const PAGE = "m-auto max-w-[1280px] px-8 pt-[45px] pb-[25px] upto-600:px-[22px] upto-600:py-7";
+export const BACK_LINK = "text-[12px] text-muted";
+export const KICKER = "mb-5 text-[10px] font-extrabold tracking-[.16em] text-brand-hover";
+export const CATALOG_INPUT = "min-h-12 rounded-lg border border-line bg-card px-4 py-3.5 text-[13px] text-ink";
+export const FORM_PANEL = "rounded-[14px] border border-card-line bg-card p-[30px] upto-800:p-6";
+export const PANEL_TITLE = "mb-[25px] text-[20px] font-extrabold";
+export const FORM = "grid gap-6";
+export const FORM_NOTE = "text-[12px] leading-[1.9] text-muted";
+export const FIELD_LABEL = "grid min-w-0 gap-2.5 text-[13px] font-semibold";
+const FIELD_BOX = "min-h-[46px] w-full min-w-0 rounded-lg border border-line bg-night p-3";
+export const FIELD_INPUT = `${FIELD_BOX} text-[13px]`;
+export const FILE_INPUT = `${FIELD_BOX} text-[11px]`;
+export const FIELD_HINT = "text-[10px] font-normal wrap-anywhere text-subtle";
+export const CHECKBOX_LABEL = "flex items-start gap-3 text-[11px] leading-[1.9] font-normal text-soft";
+export const CHECKBOX = "mt-1 size-[17px] shrink-0 accent-brand";
+export const PRIMARY_BUTTON = "min-h-12 rounded-lg bg-brand px-[18px] py-3 text-[13px] font-extrabold text-brand-ink hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-40";

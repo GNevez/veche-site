@@ -1,42 +1,32 @@
-import { WINDOWS_DOWNLOAD_URL } from "@/lib/downloads";
-import { DownloadIcon } from "./icons";
-import { SiteHeader } from "./SiteHeader";
-import { VaultPortal } from "./VaultPortal";
+import { DownloadButtons } from "./DownloadButtons";
+import { HeroPortal } from "./HeroPortal";
+import { AmbientBackground } from "./AmbientBackground";
+import { EYEBROW, STATUS_DOT } from "./home-classes";
 
 export function Hero() {
   return (
-    <div className="relative min-h-[900px] overflow-hidden">
+    <section className="relative isolate overflow-hidden" aria-labelledby="hero-title">
+      <AmbientBackground hero />
       <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
 
-      <SiteHeader />
-
-      <main className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-8 pt-6 pb-[72px] min-[961px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-        <div className="relative z-[2] flex flex-col gap-7">
-          <h1 className="m-0 font-display text-[clamp(42px,6vw,84px)] leading-[.98] font-extrabold tracking-[-0.02em] uppercase">
-            Há mais do <span className="text-gold">outro lado.</span>
-          </h1>
-          <p className="m-0 max-w-[480px] text-lg leading-[1.6] text-muted">
-            Call com o squad, um feed do que a galera está jogando e clipes da sua jogatina salvos na hora. Tudo num lugar só. Só falta abrir o cofre.
-          </p>
-          <div id="baixar" className="flex flex-wrap gap-3.5 pt-1">
-            <a
-              href={WINDOWS_DOWNLOAD_URL}
-              className="inline-flex min-h-14 items-center gap-3 rounded-xl bg-gold px-7 text-base font-extrabold text-gold-ink shadow-[0_10px_40px_rgb(209_164_88/.25)] transition-colors hover:bg-gold-hover"
-            >
-              <DownloadIcon size={20} />
-              Baixar para Windows
-            </a>
-            <a
-              href="#"
-              className="inline-flex min-h-14 items-center gap-2.5 rounded-xl border border-line px-6 text-base font-bold text-ink transition-colors hover:border-gold"
-            >
-              Outras plataformas
-            </a>
-          </div>
+      <div className="m-auto grid min-h-[690px] max-w-[1280px] grid-cols-[1fr_1fr] items-center gap-[30px] px-8 pt-16 pb-[76px] min-[1450px]:pt-[90px] min-[1450px]:pb-[105px] upto-1100:min-h-[630px] upto-1100:grid-cols-[1fr_.95fr] upto-1100:gap-2.5 upto-1100:pt-[60px] upto-1100:pb-[60px] upto-800:grid-cols-[1fr] upto-800:gap-[65px] upto-800:pt-[50px] upto-800:pb-[35px] upto-800:text-center upto-560:gap-[60px] upto-560:px-[22px] upto-360:px-[18px]">
+        <div className="relative z-2">
+          <p className={`${EYEBROW} text-[11px] tracking-[.13em] text-brand-hover upto-800:justify-center upto-560:text-[9px] upto-560:tracking-[.09em]`}><span className={STATUS_DOT} /> Seu próximo ponto de encontro</p>
+          <h1 id="hero-title" className="my-[27px] max-w-[620px] font-display text-[clamp(52px,5.4vw,76px)] leading-[1.08] font-extrabold tracking-[-.055em] uppercase upto-1100:text-[60px] upto-800:mx-auto upto-800:my-[23px] upto-800:text-[clamp(44px,8vw,66px)] upto-560:text-[clamp(38px,10.5vw,58px)] upto-560:tracking-[-.06em] upto-360:text-[37px]">Há mais do <span className="text-brand">outro lado.</span></h1>
+          <p className="mb-[31px] max-w-[445px] text-[17px] leading-[1.85] text-soft upto-800:mx-auto upto-800:text-[15px] upto-560:text-[14px] upto-560:leading-[1.8]">A partida acaba. A resenha continua. Reúna seu squad, compartilhe suas jogadas e encontre quem vive o jogo como você.</p>
+          <DownloadButtons layout="hero" />
+          <p className="mt-5 text-[11px] text-subtle upto-560:text-[10px]">Sua galera. Seus jogos. Um lugar para ficar.</p>
         </div>
-
-        <VaultPortal />
-      </main>
-    </div>
+        <div className="relative min-w-0 upto-1100:origin-center upto-1100:transform-[scale(.85)] upto-800:m-auto upto-800:w-full upto-800:max-w-[550px] upto-800:transform-none">
+          <span className="absolute top-[-29px] left-1/2 text-[9px] tracking-[.22em] whitespace-nowrap text-subtle transform-[translateX(-50%)] upto-560:top-[-25px] upto-560:text-[8px]">CONEXÕES REAIS. NOVAS HISTÓRIAS.</span>
+          <HeroPortal />
+          <span className="relative mt-[25px] block text-center text-[10px] tracking-[.03em] text-subtle upto-560:mt-3 upto-560:text-[9px]">Toque na chama. Veja o que acontece.</span>
+        </div>
+      </div>
+      <div className="relative mx-auto flex max-w-[1216px] items-center justify-between border-t border-t-[#ffffff0f] pt-[23px] pb-[25px] upto-1100:mx-8 upto-560:mx-[22px] upto-560:pt-5 upto-560:pb-5">
+        <a href="#o-veche" className="flex gap-7 text-[12px] text-soft upto-560:text-[10px]">Explore o outro lado <span aria-hidden="true" className="text-brand">↓</span></a>
+        <span className="text-[9px] tracking-[.14em] text-subtle upto-800:text-[8px] upto-560:hidden">FEITO PARA QUEM JOGA JUNTO</span>
+      </div>
+    </section>
   );
 }

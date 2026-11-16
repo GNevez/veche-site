@@ -1,0 +1,20 @@
+name: veche-site
+
+services:
+  site:
+    build: .
+    restart: unless-stopped
+    networks:
+      - veche
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=veche_default
+      - traefik.http.routers.site.rule=Host(`${SITE_DOMAIN:-veche.com.br}`) || Host(`www.${SITE_DOMAIN:-veche.com.br}`)
+      - traefik.http.routers.site.entrypoints=websecure
+      - traefik.http.routers.site.tls.certresolver=le
+      - traefik.http.services.site.loadbalancer.server.port=3000
+
+networks:
+  veche:
+    name: veche_default
+    external: true

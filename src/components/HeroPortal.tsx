@@ -27,9 +27,9 @@ const MOTES = (() => {
       size,
       openOpacity: 0.35 + glow * 0.5,
       closedOpacity: 0.08 + glow * 0.12,
-      dx: `${(random() * 24 - 12).toFixed(0)}px`,
-      dy: `${(random() * 24 - 12).toFixed(0)}px`,
-      duration: `${(6 + random() * 6).toFixed(1)}s`,
+      dx: `${(random() * 90 - 45).toFixed(0)}px`,
+      dy: `${(-35 - random() * 65).toFixed(0)}px`,
+      duration: `${(16 + random() * 14).toFixed(1)}s`,
     };
   });
 })();
@@ -37,16 +37,16 @@ const MOTES = (() => {
 const TICKS = Array.from({ length: 12 }, (_, index) => index);
 
 const HALOS = [
-  { size: 760, className: "border border-gold/10", open: "scale(1)", closed: "scale(.82)", transition: `transform 1600ms ${EASE}, opacity 1200ms ease` },
-  { size: 1080, className: "border border-gold/[.07]", open: "scale(1)", closed: "scale(.8)", transition: `transform 1900ms ${EASE} 100ms, opacity 1400ms ease` },
-  { size: 1440, className: "border border-dashed border-gold/[.06]", open: "scale(1) rotate(30deg)", closed: "scale(.78) rotate(0deg)", transition: `transform 2200ms ${EASE} 200ms, opacity 1600ms ease` },
+  { size: 760, className: "border border-brand/10", open: "scale(1)", closed: "scale(.82)", transition: `transform 1600ms ${EASE}, opacity 1200ms ease` },
+  { size: 1080, className: "border border-brand/[.07]", open: "scale(1)", closed: "scale(.8)", transition: `transform 1900ms ${EASE} 100ms, opacity 1400ms ease` },
+  { size: 1440, className: "border border-dashed border-brand/[.06]", open: "scale(1) rotate(30deg)", closed: "scale(.78) rotate(0deg)", transition: `transform 2200ms ${EASE} 200ms, opacity 1600ms ease` },
 ];
 
 function centered(size: number): CSSProperties {
   return { left: -size / 2, top: -size / 2, width: size, height: size };
 }
 
-export function VaultPortal() {
+export function HeroPortal() {
   const [opened, setOpened] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -74,14 +74,14 @@ export function VaultPortal() {
             />
           ))}
           <div
-            className="absolute rounded-full bg-[radial-gradient(circle,rgb(209_164_88/.09)_0%,rgb(209_164_88/.03)_22%,rgb(209_164_88/0)_45%)]"
+            className="absolute rounded-full bg-[radial-gradient(circle,rgb(242_95_28/.09)_0%,rgb(242_95_28/.03)_22%,rgb(242_95_28/0)_45%)]"
             style={{ ...centered(1800), opacity: opened ? 1 : 0, transition: "opacity 1400ms ease" }}
           />
           {opened &&
             [0, 1500, 3000].map((delay) => (
               <div
                 key={delay}
-                className="absolute animate-ring-pulse rounded-full border border-gold/35 motion-reduce:animate-none"
+                className="absolute animate-ring-pulse rounded-full border border-brand/35 motion-reduce:animate-none"
                 style={{ ...centered(520), animationDelay: `${delay}ms` }}
               />
             ))}
@@ -101,7 +101,7 @@ export function VaultPortal() {
             return (
               <div
                 key={index}
-                className="absolute animate-drift rounded-full bg-gold shadow-[0_0_8px_rgb(209_164_88/.6)] motion-reduce:animate-none"
+                className="absolute animate-drift rounded-full bg-brand shadow-[0_0_8px_rgb(242_95_28/.6)] motion-reduce:animate-none"
                 style={style}
               />
             );
@@ -110,20 +110,20 @@ export function VaultPortal() {
 
         <div
           aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -mt-[250px] -ml-[250px] size-[500px] rounded-full border border-dashed border-gold/[.22]"
+          className="absolute top-1/2 left-1/2 -mt-[250px] -ml-[250px] size-[500px] rounded-full border border-dashed border-brand/[.22]"
           style={{ transform: opened ? "rotate(60deg)" : "rotate(0deg)", transition: `transform 1400ms ${EASE}` }}
         />
         <div
           aria-hidden="true"
           className="absolute top-1/2 left-1/2 -mt-[195px] -ml-[195px] size-[390px] rounded-full border border-white/[.07]"
           style={{
-            background: opened ? "radial-gradient(circle, rgba(209,164,88,.10) 0%, rgba(209,164,88,0) 70%)" : "transparent",
+            background: opened ? "radial-gradient(circle, rgba(242,95,28,.10) 0%, rgba(242,95,28,0) 70%)" : "transparent",
             transition: "background 900ms ease",
           }}
         />
         <div
           aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -mt-[145px] -ml-[145px] size-[290px] rounded-full border border-gold/[.38]"
+          className="absolute top-1/2 left-1/2 -mt-[145px] -ml-[145px] size-[290px] rounded-full border border-brand/[.38]"
           style={{ transform: opened ? "rotate(-120deg)" : "rotate(0deg)", transition: `transform 1400ms ${EASE}` }}
         >
           {TICKS.map((index) => {
@@ -131,7 +131,7 @@ export function VaultPortal() {
             return (
               <div
                 key={index}
-                className={`absolute top-1/2 left-1/2 -ml-px origin-[50%_0] rounded-sm ${major ? "h-3 w-[3px] bg-gold" : "h-1.5 w-0.5 bg-gold/45"}`}
+                className={`absolute top-1/2 left-1/2 -ml-px origin-[50%_0] rounded-sm ${major ? "h-3 w-[3px] bg-brand" : "h-1.5 w-0.5 bg-brand/45"}`}
                 style={{ transform: `rotate(${index * 30}deg) translateY(-145px)` }}
               />
             );
@@ -141,11 +141,11 @@ export function VaultPortal() {
         <button
           type="button"
           onClick={toggle}
-          aria-label={opened ? "Fechar o cofre" : "Abrir o cofre"}
+          aria-label={opened ? "Fechar o portal" : "Abrir o portal"}
           aria-pressed={opened}
-          className="absolute top-1/2 left-1/2 z-[2] -mt-[98px] -ml-[98px] flex size-[196px] cursor-pointer items-center justify-center rounded-full border border-dial-line bg-dial p-0 focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-gold"
+          className="absolute top-1/2 left-1/2 z-[2] -mt-[98px] -ml-[98px] flex size-[196px] cursor-pointer items-center justify-center rounded-full border border-dial-line bg-dial p-0 focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-brand"
           style={{
-            boxShadow: opened ? "0 0 0 10px rgba(209,164,88,.06), 0 0 80px rgba(209,164,88,.28)" : "0 0 0 10px rgba(255,255,255,.02)",
+            boxShadow: opened ? "0 0 0 10px rgba(242,95,28,.06), 0 0 80px rgba(242,95,28,.28)" : "0 0 0 10px rgba(255,255,255,.02)",
             transform: opened ? "scale(.9)" : "scale(1)",
             transition: `box-shadow 900ms ease, transform 900ms ${EASE}`,
           }}
@@ -154,14 +154,14 @@ export function VaultPortal() {
             src={symbol}
             alt=""
             priority
-            className="block size-[118px]"
-            style={{ transform: opened ? "rotate(120deg)" : "rotate(0deg)", transition: "transform 1200ms cubic-bezier(.3,1.4,.4,1)" }}
+            className="block h-[118px] w-auto"
+            style={{ transform: opened ? "scale(1.12)" : "scale(1)", transition: "transform 1200ms cubic-bezier(.3,1.4,.4,1)" }}
           />
         </button>
 
         <div
           aria-hidden="true"
-          className="absolute top-[34px] left-0 z-[3] w-[228px]"
+          className="pointer-events-none absolute top-[34px] left-0 z-[3] w-[228px]"
           style={{
             transform: opened ? "translate(0,0) rotate(-4deg) scale(1)" : "translate(150px,150px) rotate(0deg) scale(.4)",
             opacity: opened ? 1 : 0,
@@ -172,7 +172,7 @@ export function VaultPortal() {
         </div>
         <div
           aria-hidden="true"
-          className="absolute top-[196px] -right-2 z-[3] w-[248px]"
+          className="pointer-events-none absolute top-[196px] -right-2 z-[3] w-[248px]"
           style={{
             transform: opened ? "translate(0,0) rotate(3deg) scale(1)" : "translate(-140px,20px) rotate(0deg) scale(.4)",
             opacity: opened ? 1 : 0,
@@ -183,7 +183,7 @@ export function VaultPortal() {
         </div>
         <div
           aria-hidden="true"
-          className="absolute bottom-1.5 left-10 z-[3] w-[236px]"
+          className="pointer-events-none absolute bottom-1.5 left-10 z-[3] w-[236px]"
           style={{
             transform: opened ? "translate(0,0) rotate(-2deg) scale(1)" : "translate(100px,-170px) rotate(0deg) scale(.4)",
             opacity: opened ? 1 : 0,
@@ -193,10 +193,6 @@ export function VaultPortal() {
           <ClipCard progress={opened ? "92%" : "0%"} />
         </div>
       </div>
-
-      <p aria-live="polite" className="flex min-h-5 items-center gap-2 text-[13px] font-semibold text-subtle">
-        {opened ? "O cofre está aberto. Clique no símbolo para fechar." : "Clique no símbolo para abrir o cofre."}
-      </p>
     </div>
   );
 }
