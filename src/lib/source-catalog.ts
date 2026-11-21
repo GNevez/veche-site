@@ -8,8 +8,9 @@ export const sourceLink = (source: CatalogSource) => new URL(source.url, API_URL
 
 export async function apiError(response: Response) {
   if (response.status === 413) return "O arquivo excede o limite de 20 MB.";
-  if (response.status === 429) return "Limite de envios atingido. Tente novamente mais tarde.";
   if (response.status === 401) return "Sua sessão expirou. Entre novamente.";
   const body = await response.json().catch(() => null);
-  return body?.message || "Não foi possível concluir a solicitação. Tente novamente.";
+  if (body?.message) return body.message;
+  if (response.status === 429) return "Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente de novo.";
+  return "Não foi possível concluir a solicitação. Tente novamente.";
 }
